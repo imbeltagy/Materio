@@ -7,7 +7,7 @@ import Header from "./components/header/Index";
 
 const Layout = () => {
   return (
-    <Stack direction="row" spacing={4}>
+    <Stack direction="row">
       <Sidebar />
       <Container>
         <Header />
@@ -18,7 +18,7 @@ const Layout = () => {
 };
 
 function App() {
-  const [mode, setMode] = useState("dark");
+  const [mode, setMode] = useState("light");
 
   const theme = useMemo(
     () =>
@@ -73,6 +73,23 @@ function App() {
     [mode]
   );
 
+  const routes = {
+    withSidebar: [
+      { element: <>Dashboard</>, path: "/" },
+      { element: <>Account Settings</>, path: "/account-settings" },
+      { element: <>Typography</>, path: "/typography" },
+      { element: <>Icons</>, path: "/icons" },
+      { element: <>Cards</>, path: "/cards" },
+      { element: <>Tables</>, path: "/tables" },
+      { element: <>Form Layouts</>, path: "/form-layouts" },
+    ],
+    withoutSidebar: [
+      { element: <>Login</>, path: "/login" },
+      { element: <>Register</>, path: "/register" },
+      { element: <>Error</>, path: "/error" },
+    ],
+  };
+
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
@@ -80,11 +97,14 @@ function App() {
         <Routes>
           {/* Pages With Sidebar and Header */}
           <Route path="/" element={<Layout />}>
-            <Route path="/" element={<>Dashboard</>} />
-            <Route path="messages" element={<>Messages</>} />
+            {routes.withSidebar.map(({ path, element }) => (
+              <Route path={path} element={element} />
+            ))}
           </Route>
           {/* Pages Without Sidebar and Header */}
-          <Route path="signin" element={<>signin</>} />
+          {routes.withoutSidebar.map(({ path, element }) => (
+            <Route path={path} element={element} />
+          ))}
         </Routes>
       </ThemeProvider>
     </BrowserRouter>
