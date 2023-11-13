@@ -64,6 +64,7 @@ const Nav = () => {
 
   const StyledDivider = styled(Divider)(({ theme }) => ({
     marginTop: "1.85rem",
+    marginBottom: "1rem",
     fontSize: ".75rem",
     fontWeight: 500,
     color: theme.palette.divider,
