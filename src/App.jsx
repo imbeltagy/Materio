@@ -58,6 +58,7 @@ function App() {
                   secondary: "rgba(58, 53, 65, 0.68)",
                   disabled: "#dddee3",
                 },
+                divider: "rgba(58, 53, 65, 0.38)",
               }
             : {
                 background: {
@@ -71,7 +72,9 @@ function App() {
                 },
                 action: {
                   active: "#fff",
+                  hover: "rgba(231, 227, 252, 0.04)",
                 },
+                divider: "#605c75",
               }),
         },
       }),

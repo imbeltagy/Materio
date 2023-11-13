@@ -66,7 +66,8 @@ const Nav = () => {
     marginTop: "1.85rem",
     fontSize: ".75rem",
     fontWeight: 500,
-    color: "rgba(58, 53, 65, 0.38)",
+    color: theme.palette.divider,
+    "&::before, &::after": { opacity: 0.4 },
   }));
 
   return (
