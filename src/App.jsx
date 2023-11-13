@@ -5,12 +5,12 @@ import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/sidebar/Index";
 import Header from "./components/header/Index";
 
-const Layout = () => {
+const Layout = ({ mode, setMode }) => {
   return (
     <Stack direction="row">
       <Sidebar />
       <Container>
-        <Header />
+        <Header mode={mode} setMode={setMode} />
         <Outlet />
       </Container>
     </Stack>
@@ -56,6 +56,7 @@ function App() {
                 text: {
                   primary: "rgba(58, 53, 65, 0.87)",
                   secondary: "rgba(58, 53, 65, 0.68)",
+                  disabled: "#dddee3",
                 },
               }
             : {
@@ -66,6 +67,10 @@ function App() {
                 text: {
                   primary: "rgba(231, 227, 252, 0.87)",
                   secondary: "rgba(231, 227, 252, 0.68)",
+                  disabled: "#444059",
+                },
+                action: {
+                  active: "#fff",
                 },
               }),
         },
@@ -96,7 +101,7 @@ function App() {
         <CssBaseline />
         <Routes>
           {/* Pages With Sidebar and Header */}
-          <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Layout mode={mode} setMode={setMode} />}>
             {routes.withSidebar.map(({ path, element }) => (
               <Route path={path} element={element} key={path} />
             ))}
