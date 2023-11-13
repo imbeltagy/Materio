@@ -1,6 +1,7 @@
 import { Container, CssBaseline, Stack, ThemeProvider, createTheme } from "@mui/material";
 import { useMemo, useState } from "react";
 import "./assets/fonts.css";
+import "./scrollbar.css";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/sidebar/Index";
 import Header from "./components/header/Index";
