@@ -71,11 +71,13 @@ const Nav = () => {
 
   return (
     <StyledList>
-      {items.map((item) =>
+      {items.map((item, i) =>
         item.type === "link" ? (
-          <RouteLink text={item.text} to={item.to} icon={item.icon} />
+          <RouteLink text={item.text} to={item.to} icon={item.icon} key={i} />
         ) : (
-          <StyledDivider textAlign="left">{item.text}</StyledDivider>
+          <StyledDivider textAlign="left" key={i}>
+            {item.text}
+          </StyledDivider>
         )
       )}
     </StyledList>
