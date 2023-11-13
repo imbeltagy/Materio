@@ -98,12 +98,12 @@ function App() {
           {/* Pages With Sidebar and Header */}
           <Route path="/" element={<Layout />}>
             {routes.withSidebar.map(({ path, element }) => (
-              <Route path={path} element={element} />
+              <Route path={path} element={element} key={path} />
             ))}
           </Route>
           {/* Pages Without Sidebar and Header */}
           {routes.withoutSidebar.map(({ path, element }) => (
-            <Route path={path} element={element} />
+            <Route path={path} element={element} key={path} />
           ))}
         </Routes>
       </ThemeProvider>
