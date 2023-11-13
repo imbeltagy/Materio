@@ -5,12 +5,12 @@ import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/sidebar/Index";
 import Header from "./components/header/Index";
 
-const Layout = ({ mode, setMode }) => {
+const Layout = ({ setMode, sidebarOpen, setSidebarOpen }) => {
   return (
     <Stack direction="row">
-      <Sidebar />
+      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
       <Container>
-        <Header mode={mode} setMode={setMode} />
+        <Header setMode={setMode} setSidebarOpen={setSidebarOpen} />
         <Outlet />
       </Container>
     </Stack>
@@ -18,6 +18,8 @@ const Layout = ({ mode, setMode }) => {
 };
 
 function App() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   const [mode, setMode] = useState("light");
 
   const theme = useMemo(
@@ -27,6 +29,7 @@ function App() {
           fontFamily: "Inter, sans-serif",
         },
         palette: {
+          mode,
           primary: {
             light: "rgb(198, 167, 254)",
             main: "rgb(145, 85, 253)",
@@ -104,7 +107,10 @@ function App() {
         <CssBaseline />
         <Routes>
           {/* Pages With Sidebar and Header */}
-          <Route path="/" element={<Layout mode={mode} setMode={setMode} />}>
+          <Route
+            path="/"
+            element={<Layout mode={mode} setMode={setMode} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />}
+          >
             {routes.withSidebar.map(({ path, element }) => (
               <Route path={path} element={element} key={path} />
             ))}

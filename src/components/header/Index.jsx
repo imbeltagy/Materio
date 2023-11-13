@@ -1,9 +1,16 @@
 import styled from "@emotion/styled";
-import { DarkModeOutlined, NotificationsOutlined, Search, WbSunnyOutlined } from "@mui/icons-material";
+import {
+  DarkModeOutlined,
+  Menu,
+  MenuOutlined,
+  NotificationsOutlined,
+  Search,
+  WbSunnyOutlined,
+} from "@mui/icons-material";
 import { Avatar, Badge, IconButton, InputBase, Stack, Toolbar } from "@mui/material";
 import React, { useCallback } from "react";
 
-const Header = ({ mode, setMode }) => {
+const Header = ({ setMode, setSidebarOpen }) => {
   const SearchBar = styled(Stack)(({ theme }) => ({
     gap: ".5rem",
     borderRadius: "10rem",
@@ -24,23 +31,38 @@ const Header = ({ mode, setMode }) => {
     },
   }));
 
+  const LightIcon = styled(WbSunnyOutlined)(({ theme }) => ({ display: theme.palette.mode === "light" && "none" }));
+  const DarkIcon = styled(DarkModeOutlined)(({ theme }) => ({ display: theme.palette.mode === "dark" && "none" }));
+
   const handleChangeMode = useCallback(() => {
     setTimeout(() => setMode((prev) => (prev === "light" ? "dark" : "light")), 400);
   }, []);
 
+  const handleSidebarOpen = useCallback(() => {
+    setSidebarOpen(true);
+  }, []);
+
   return (
     <Toolbar sx={{ justifyContent: "space-between", paddingInline: "0 !important" }}>
-      <SearchBar direction="row" alignItems="center" p=".15rem .8rem">
-        <Search sx={{ width: "1.4rem" }} />
-        <InputBase />
-      </SearchBar>
+      <Stack direction="row" alignItems="center">
+        {/* Open SideBar */}
+        <IconButton edge="start" onClick={handleSidebarOpen} sx={{ display: { lg: "none" }, marginRight: "1rem" }}>
+          <Menu />
+        </IconButton>
+
+        {/* Search Bar */}
+        <SearchBar direction="row" alignItems="center" p=".15rem .8rem">
+          <Search sx={{ width: "1.4rem" }} />
+          <InputBase />
+        </SearchBar>
+      </Stack>
 
       {/* Icons */}
       <Stack direction="row" alignItems="center">
         {/* Mode */}
         <StyledIconButton onClick={handleChangeMode}>
-          <WbSunnyOutlined sx={{ display: mode === "light" && "none" }} />
-          <DarkModeOutlined sx={{ display: mode === "dark" && "none" }} />
+          <LightIcon />
+          <DarkIcon />
         </StyledIconButton>
         {/* Notification */}
         <StyledIconButton>
