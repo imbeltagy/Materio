@@ -1,41 +1,29 @@
 import styled from "@emotion/styled";
-import {
-  DarkModeOutlined,
-  Menu,
-  MenuOutlined,
-  NotificationsOutlined,
-  Search,
-  WbSunnyOutlined,
-} from "@mui/icons-material";
-import { Avatar, Badge, IconButton, InputBase, Stack, Toolbar } from "@mui/material";
+import { DarkModeOutlined, Menu, Search, WbSunnyOutlined } from "@mui/icons-material";
+import { IconButton, InputBase, Stack, Toolbar } from "@mui/material";
 import React, { useCallback } from "react";
+import Notifications from "./Notifications";
+import Profile from "./Profile";
 
+// Styled Components
+const SearchBar = styled(Stack)(({ theme }) => ({
+  gap: ".5rem",
+  borderRadius: "10rem",
+  border: `2px solid ${theme.palette.text.disabled}`,
+  "&:hover": { borderColor: theme.palette.text.secondary },
+  "& path": { fill: theme.palette.text.secondary },
+  "&:has(*:focus)": { borderColor: theme.palette.primary.main },
+}));
+
+const LightIcon = styled(WbSunnyOutlined)(({ theme }) => ({ display: theme.palette.mode === "light" && "none" }));
+const DarkIcon = styled(DarkModeOutlined)(({ theme }) => ({ display: theme.palette.mode === "dark" && "none" }));
+
+const StyledIconButton = styled(IconButton)(({ theme }) => ({ "& path": { fill: theme.palette.text.primary } }));
+
+// Main Component
 const Header = ({ setMode, setSidebarOpen }) => {
-  const SearchBar = styled(Stack)(({ theme }) => ({
-    gap: ".5rem",
-    borderRadius: "10rem",
-    border: `2px solid ${theme.palette.text.disabled}`,
-    "&:hover": { borderColor: theme.palette.text.secondary },
-    "& path": { fill: theme.palette.text.secondary },
-    "&:has(*:focus)": { borderColor: theme.palette.primary.main },
-  }));
-
-  const StyledIconButton = styled(IconButton)(({ theme }) => ({ "& path": { fill: theme.palette.text.primary } }));
-
-  const StyledBadge = styled(Badge)(({ theme }) => ({
-    "& .MuiBadge-dot": {
-      top: "auto",
-      bottom: "-5%",
-      right: "14%",
-      outline: `2px solid ${theme.palette.background.default}`,
-    },
-  }));
-
-  const LightIcon = styled(WbSunnyOutlined)(({ theme }) => ({ display: theme.palette.mode === "light" && "none" }));
-  const DarkIcon = styled(DarkModeOutlined)(({ theme }) => ({ display: theme.palette.mode === "dark" && "none" }));
-
   const handleChangeMode = useCallback(() => {
-    setTimeout(() => setMode((prev) => (prev === "light" ? "dark" : "light")), 400);
+    setTimeout(() => setMode((prev) => (prev === "light" ? "dark" : "light")), 333);
   }, []);
 
   const handleSidebarOpen = useCallback(() => {
@@ -65,15 +53,9 @@ const Header = ({ setMode, setSidebarOpen }) => {
           <DarkIcon />
         </StyledIconButton>
         {/* Notification */}
-        <StyledIconButton>
-          <NotificationsOutlined />
-        </StyledIconButton>
+        <Notifications />
         {/* Avatar */}
-        <IconButton>
-          <StyledBadge variant="dot" color="success">
-            <Avatar src="/images/avatars/1.png" alt="User Avatar" />
-          </StyledBadge>
-        </IconButton>
+        <Profile />
       </Stack>
     </Toolbar>
   );
