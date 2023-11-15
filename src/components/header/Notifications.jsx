@@ -16,7 +16,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 const StyledIconButton = styled(IconButton)(({ theme }) => ({ "& path": { fill: theme.palette.text.primary } }));
 
@@ -140,8 +140,8 @@ const Notifications = () => {
         {/* Items */}
         <Box overflow="auto" maxHeight="21.58rem" height="auto">
           {notifications.map(({ avatar, alt, title, brief, date }, i) => (
-            <>
-              <StyledMenuItem onClick={handleClose} key={i}>
+            <React.Fragment key={i}>
+              <StyledMenuItem onClick={handleClose}>
                 <ListItemAvatar>
                   <Avatar src={avatar} alt={alt}>
                     {alt}
@@ -158,8 +158,8 @@ const Notifications = () => {
                   </Typography>
                 </ListItemSecondaryAction>
               </StyledMenuItem>
-              <StyledDivider key={i + notifications.length} />
-            </>
+              <StyledDivider />
+            </React.Fragment>
           ))}
         </Box>
 
