@@ -67,8 +67,7 @@ const Nav = () => {
     marginBottom: "1rem",
     fontSize: ".75rem",
     fontWeight: 500,
-    color: theme.palette.divider,
-    "&::before, &::after": { opacity: 0.4 },
+    color: theme.palette.text.light,
   }));
 
   return (

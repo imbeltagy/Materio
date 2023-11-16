@@ -33,8 +33,6 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 const StyledDivider = styled(Divider)(({ theme }) => ({
   marginBottom: ".5rem",
-  color: theme.palette.divider,
-  opacity: 0.4,
 }));
 
 const StyledListItemIcon = styled(ListItemIcon)(({ theme }) => ({

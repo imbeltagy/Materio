@@ -1,18 +1,21 @@
-import { Container, CssBaseline, Stack, ThemeProvider, createTheme } from "@mui/material";
+import { Container, CssBaseline, Grid, Stack, ThemeProvider, createTheme } from "@mui/material";
 import { useMemo, useState } from "react";
 import "./assets/fonts.css";
 import "./scrollbar.css";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/sidebar/Index";
 import Header from "./components/header/Index";
+import Dashboard from "./pages/dashboard/Index";
 
 const Layout = ({ setMode, sidebarOpen, setSidebarOpen }) => {
   return (
     <Stack direction="row">
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-      <Container>
+      <Container maxWidth="xl">
         <Header setMode={setMode} setSidebarOpen={setSidebarOpen} />
-        <Outlet />
+        <Grid container spacing={3} mt={0} mb={3} component="main">
+          <Outlet />
+        </Grid>
       </Container>
     </Stack>
   );
@@ -36,6 +39,7 @@ function App() {
             main: "rgb(145, 85, 253)",
           },
           secondary: {
+            light: "rgba(58, 53, 65, 0.1)",
             main: "rgb(138, 141, 147)",
           },
           success: {
@@ -61,8 +65,9 @@ function App() {
                   primary: "rgba(58, 53, 65, 0.87)",
                   secondary: "rgba(58, 53, 65, 0.68)",
                   disabled: "#dddee3",
+                  light: "rgba(58, 53, 65, 0.38)",
                 },
-                divider: "rgba(58, 53, 65, 0.38)",
+                divider: "rgba(58, 53, 65, 0.1)",
               }
             : {
                 background: {
@@ -73,21 +78,23 @@ function App() {
                   primary: "rgba(231, 227, 252, 0.87)",
                   secondary: "rgba(231, 227, 252, 0.68)",
                   disabled: "#444059",
+                  light: "#605c75",
                 },
                 action: {
                   active: "#fff",
                   hover: "rgba(231, 227, 252, 0.04)",
                 },
-                divider: "#605c75",
+                divider: "#605c7560",
               }),
         },
+        spacing: (i) => `${i * 0.5}rem`,
       }),
     [mode]
   );
 
   const routes = {
     withSidebar: [
-      { element: <>Dashboard</>, path: "/" },
+      { element: <Dashboard />, path: "/" },
       { element: <>Account Settings</>, path: "/account-settings" },
       { element: <>Typography</>, path: "/typography" },
       { element: <>Icons</>, path: "/icons" },

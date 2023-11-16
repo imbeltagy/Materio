@@ -27,8 +27,6 @@ const StyledMenuItem = styled(MenuItem)({
 
 const StyledDivider = styled(Divider)(({ theme }) => ({
   margin: "0 !important",
-  color: theme.palette.divider,
-  opacity: 0.4,
 }));
 
 const Notifications = () => {
