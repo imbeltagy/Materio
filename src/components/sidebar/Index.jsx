@@ -75,12 +75,15 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
       </Stack>
     );
   } else {
-    const StyledDrawer = styled(Drawer)(({ theme }) => ({ backgroundColor: theme.palette.background.default }));
-
     return (
-      <StyledDrawer anchor="left" open={sidebarOpen} onClose={handleSidebarClose}>
+      <Drawer
+        sx={{ "& .MuiPaper-root": { backgroundColor: "background.default" } }}
+        anchor="left"
+        open={sidebarOpen}
+        onClose={handleSidebarClose}
+      >
         <Content />
-      </StyledDrawer>
+      </Drawer>
     );
   }
 };
