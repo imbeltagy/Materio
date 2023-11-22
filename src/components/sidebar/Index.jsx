@@ -4,31 +4,31 @@ import Nav from "./Nav";
 import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
 
-const Content = () => {
-  const scrollShadow = useRef();
+const ScrollShadow = styled(Box)(({ theme }) => ({
+  position: "relative",
+  width: "100%",
+  height: "0",
+  zIndex: 120,
+  "&::before": {
+    content: '""',
+    display: "block",
+    width: "calc(100% - 20px)",
+    transition: "opacity .3s, height .3s",
+    opacity: 0,
+    height: 0,
+    backgroundImage:
+      theme.palette.mode === "light"
+        ? "linear-gradient(#F4F5FA 40%,rgba(244, 245, 250, 0.1) 95%,rgba(244, 245, 250, 0.05));"
+        : "linear-gradient(rgb(40, 36, 61) 40%, rgba(40, 36, 61, 0.1) 95%, rgba(40, 36, 61, 0.05))",
+  },
+  "&.show::before": {
+    opacity: 1,
+    height: "4rem",
+  },
+}));
 
-  const ScrollShadow = styled(Box)(({ theme }) => ({
-    position: "relative",
-    width: "100%",
-    height: "0",
-    zIndex: 120,
-    "&::before": {
-      content: '""',
-      display: "block",
-      width: "calc(100% - 20px)",
-      transition: "opacity .3s, height .3s",
-      opacity: 0,
-      height: 0,
-      backgroundImage:
-        theme.palette.mode === "light"
-          ? "linear-gradient(#F4F5FA 40%,rgba(244, 245, 250, 0.1) 95%,rgba(244, 245, 250, 0.05));"
-          : "linear-gradient(rgb(40, 36, 61) 40%, rgba(40, 36, 61, 0.1) 95%, rgba(40, 36, 61, 0.05))",
-    },
-    "&.show::before": {
-      opacity: 1,
-      height: "4rem",
-    },
-  }));
+const Content = () => {
+  const scrollShadowRef = useRef();
 
   return (
     <>
@@ -39,7 +39,7 @@ const Content = () => {
           MATERIO
         </Typography>
       </Stack>
-      <ScrollShadow ref={scrollShadow}></ScrollShadow>
+      <ScrollShadow ref={scrollShadowRef}></ScrollShadow>
       {/* List */}
       <Stack
         minWidth="16rem"
@@ -47,8 +47,8 @@ const Content = () => {
         overflow="auto"
         onScroll={(e) => {
           e.target.scrollTop > 0
-            ? scrollShadow.current.classList.add("show")
-            : scrollShadow.current.classList.remove("show");
+            ? scrollShadowRef.current.classList.add("show")
+            : scrollShadowRef.current.classList.remove("show");
         }}
         sx={{
           position: "relative",

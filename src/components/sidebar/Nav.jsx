@@ -1,7 +1,5 @@
-import { useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
 import {
-  CreditCardOffOutlined,
   CreditCardOutlined,
   ErrorOutlineOutlined,
   FormatSizeOutlined,
@@ -18,21 +16,23 @@ import { NavLink } from "react-router-dom";
 
 const RouteLink = ({ to, icon, text }) => {
   return (
-    <NavLink to={to} style={{ color: "inherit", textDecoration: "none" }}>
-      <ListItem sx={{ mt: 0.75 }} disablePadding>
-        <ListItemButton
-          sx={{
-            borderRadius: "0 100rem 100rem 0",
-            pt: ".35rem",
-            pb: ".35rem",
-            pl: "1.3rem",
-          }}
-        >
-          <ListItemIcon sx={{ minWidth: "2rem" }}>{icon}</ListItemIcon>
-          <ListItemText>{text}</ListItemText>
-        </ListItemButton>
-      </ListItem>
-    </NavLink>
+    <ListItem sx={{ mt: 0.75 }} disablePadding>
+      <ListItemButton
+        component={NavLink}
+        to={to}
+        sx={{
+          borderRadius: "0 100rem 100rem 0",
+          pt: ".35rem",
+          pb: ".35rem",
+          pl: "1.3rem",
+          color: "inherit",
+          textDecoration: "none",
+        }}
+      >
+        <ListItemIcon sx={{ minWidth: "2rem" }}>{icon}</ListItemIcon>
+        <ListItemText>{text}</ListItemText>
+      </ListItemButton>
+    </ListItem>
   );
 };
 
@@ -54,7 +54,7 @@ const Nav = () => {
 
   const StyledList = styled(List)(({ theme }) => ({
     "& path": { fill: theme.palette.text.primary },
-    "& .active .MuiListItemButton-root": {
+    "& .MuiListItemButton-root.active": {
       backgroundImage: `linear-gradient(to right, ${theme.palette.primary.light}, ${theme.palette.primary.main})`,
       color: theme.palette.primary.contrastText,
       "& path": { fill: theme.palette.primary.contrastText },
