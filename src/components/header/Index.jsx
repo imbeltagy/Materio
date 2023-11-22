@@ -23,12 +23,10 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({ "& path": { fill: 
 // Main Component
 const Header = ({ setMode, setSidebarOpen }) => {
   const handleChangeMode = useCallback(() => {
-    setTimeout(() => setMode((prev) => (prev === "light" ? "dark" : "light")), 333);
+    setMode((prev) => (prev === "light" ? "dark" : "light"));
   }, []);
 
-  const handleSidebarOpen = useCallback(() => {
-    setSidebarOpen(true);
-  }, []);
+  const handleSidebarOpen = useCallback(() => setSidebarOpen(true));
 
   return (
     <Toolbar sx={{ justifyContent: "space-between", paddingInline: "0 !important" }}>
