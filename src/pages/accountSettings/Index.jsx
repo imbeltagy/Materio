@@ -2,8 +2,7 @@ import { Box, Card, CardContent, Tab, Tabs, useMediaQuery, useTheme } from "@mui
 import SecurityPanel from "./panels/SecurityPanel";
 import InfoPanel from "./panels/InfoPanel";
 import { useState } from "react";
-import AccountPanel from "./panels/AccountPanel";
-import FormActions from "./components/FormActions";
+import AccountPanel from "./panels/accountPanel/Index";
 import { InfoOutlined, LockOpenOutlined, Person2Outlined } from "@mui/icons-material";
 
 function a11yProps(tabName, icon) {
