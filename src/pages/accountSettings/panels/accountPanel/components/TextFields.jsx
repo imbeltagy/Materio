@@ -1,4 +1,5 @@
-import { FormControl, Grid, InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import { Grid } from "@mui/material";
+import DataField from "../../../components/DataFields";
 
 const formControls = [
   {
@@ -52,33 +53,11 @@ const formControls = [
 ];
 
 const TextFields = ({ register }) => {
-  const DataField = ({ type, name, label, defaultValue, options }) => {
-    if (type == "textField") return <TextField fullWidth {...{ label, defaultValue }} {...register(name)} />;
-    if (type == "select")
-      return (
-        <FormControl fullWidth>
-          <InputLabel id={`${name}-label`}>{label}</InputLabel>
-          <Select
-            labelId={`${name}-label`}
-            id={`${name}`}
-            defaultValue={options[0].value}
-            label={label}
-            {...register(name)}
-          >
-            {options.map(({ textValue, value: optionValue }) => (
-              <MenuItem value={optionValue} key={optionValue}>
-                {textValue}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      );
-  };
   return (
     <Grid container spacing={3}>
       {formControls.map((item) => (
         <Grid item xs={12} md={6} key={item.name}>
-          <DataField {...item} />
+          <DataField {...item} register={register} />
         </Grid>
       ))}
     </Grid>
