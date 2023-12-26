@@ -1,11 +1,11 @@
 import { Box, Container, CssBaseline, Grid, Stack, ThemeProvider, createTheme } from "@mui/material";
-import { useMemo, useState } from "react";
+import { Suspense, lazy, useMemo, useState } from "react";
 import "./assets/fonts.css";
 import "./scrollbar.css";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/sidebar/Index";
 import Header from "./components/header/Index";
-import Dashboard from "./pages/dashboard/Index";
+const Dashboard = lazy(() => import("./pages/dashboard/Index"));
 
 const Layout = ({ setMode, sidebarOpen, setSidebarOpen }) => {
   return (
@@ -120,12 +120,12 @@ function App() {
             element={<Layout mode={mode} setMode={setMode} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />}
           >
             {routes.withSidebar.map(({ path, element }) => (
-              <Route path={path} element={element} key={path} />
+              <Route path={path} element={<Suspense>{element}</Suspense>} key={path} />
             ))}
           </Route>
           {/* Pages Without Sidebar and Header */}
           {routes.withoutSidebar.map(({ path, element }) => (
-            <Route path={path} element={element} key={path} />
+            <Route path={path} element={<Suspense fallback="Loading...">{element}</Suspense>} key={path} />
           ))}
         </Routes>
       </ThemeProvider>
