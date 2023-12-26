@@ -5,12 +5,12 @@ import { useState } from "react";
 import AccountPanel from "./panels/accountPanel/Index";
 import { InfoOutlined, LockOpenOutlined, Person2Outlined } from "@mui/icons-material";
 
-function a11yProps(tabName, icon) {
+function a11yProps(tabName) {
   const theme = useTheme();
   const mdUP = useMediaQuery(theme.breakpoints.up("md"));
 
   return {
-    label: mdUP ? tabName : icon,
+    label: mdUP ? tabName : " ",
     id: `tab-${tabName}`,
     "aria-controls": `tabpanel-${tabName}`,
   };
@@ -30,9 +30,14 @@ const AccountSettings = () => {
       <Card>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs value={value} onChange={handleChange} aria-label="settings tabss">
-            <Tab {...a11yProps("Account", <Person2Outlined />)} />
-            <Tab {...a11yProps("Security", <LockOpenOutlined />)} />
-            <Tab {...a11yProps("Info", <InfoOutlined />)} />
+            <Tab icon={<Person2Outlined />} iconPosition="start" sx={{ minHeight: "3rem" }} {...a11yProps("Account")} />
+            <Tab
+              icon={<LockOpenOutlined />}
+              iconPosition="start"
+              sx={{ minHeight: "3rem" }}
+              {...a11yProps("Security")}
+            />
+            <Tab icon={<InfoOutlined />} iconPosition="start" sx={{ minHeight: "3rem" }} {...a11yProps("Info")} />
           </Tabs>
         </Box>
 
