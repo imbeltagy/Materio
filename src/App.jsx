@@ -1,6 +1,5 @@
 import { Box, Container, CssBaseline, Grid, Stack, ThemeProvider, createTheme } from "@mui/material";
 import { Suspense, lazy, useMemo, useState } from "react";
-import "./assets/fonts.css";
 import "./scrollbar.css";
 import "./global.css";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
