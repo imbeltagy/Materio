@@ -6,6 +6,7 @@ import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/sidebar/Index";
 import Header from "./components/header/Index";
 const Dashboard = lazy(() => import("./pages/dashboard/Index"));
+const AccountSettings = lazy(() => import("./pages/accountSettings/Index"));
 
 const Layout = ({ setMode, sidebarOpen, setSidebarOpen }) => {
   return (
@@ -95,7 +96,7 @@ function App() {
   const routes = {
     withSidebar: [
       { element: <Dashboard />, path: "/" },
-      { element: <>Account Settings</>, path: "/account-settings" },
+      { element: <AccountSettings />, path: "/account-settings" },
       { element: <>Typography</>, path: "/typography" },
       { element: <>Icons</>, path: "/icons" },
       { element: <>Cards</>, path: "/cards" },
