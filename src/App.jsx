@@ -11,7 +11,7 @@ const AccountSettings = lazy(() => import("./pages/accountSettings/Index"));
 
 const Layout = ({ setMode, sidebarOpen, setSidebarOpen }) => {
   return (
-    <Stack direction="row">
+    <Stack direction="row" position="relative">
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
       <Container maxWidth="xl">
         <Header setMode={setMode} setSidebarOpen={setSidebarOpen} />

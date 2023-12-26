@@ -70,7 +70,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
   if (isMdScreen) {
     return (
-      <Stack height="100svh">
+      <Stack position="sticky" top="0" height="100svh">
         <Content />
       </Stack>
     );
