@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { CardContent, Stack } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import FormActions from "../../components/FormActions";
@@ -30,22 +30,24 @@ const AccountPanel = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(submitForm)}
-      onChange={handleSubmit(handleChange)}
-      onReset={() => reset(handleResetIMG)}
-    >
-      <Stack gap={4} pt={2} pb={4}>
-        <UserPicture {...{ register, resetField, handleResetIMG, avatarSrc }} />
+    <CardContent>
+      <form
+        onSubmit={handleSubmit(submitForm)}
+        onChange={handleSubmit(handleChange)}
+        onReset={() => reset(handleResetIMG)}
+      >
+        <Stack gap={4} pt={2} pb={4}>
+          <UserPicture {...{ register, resetField, handleResetIMG, avatarSrc }} />
 
-        <TextFields register={register} />
+          <TextFields register={register} />
 
-        <ConfirmEmailAlert />
-      </Stack>
+          <ConfirmEmailAlert />
+        </Stack>
 
-      {/* Form Actions */}
-      <FormActions />
-    </form>
+        {/* Form Actions */}
+        <FormActions />
+      </form>
+    </CardContent>
   );
 };
 

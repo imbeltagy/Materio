@@ -1,9 +1,9 @@
-import { Box, Card, CardContent, Tab, Tabs, useMediaQuery, useTheme } from "@mui/material";
-import SecurityPanel from "./panels/SecurityPanel";
-import InfoPanel from "./panels/InfoPanel";
 import { useState } from "react";
-import AccountPanel from "./panels/accountPanel/Index";
+import { Box, Card, Tab, Tabs, useMediaQuery, useTheme } from "@mui/material";
 import { InfoOutlined, LockOpenOutlined, Person2Outlined } from "@mui/icons-material";
+import SecurityPanel from "./panels/securityPanel/Index";
+import InfoPanel from "./panels/InfoPanel";
+import AccountPanel from "./panels/accountPanel/Index";
 
 function a11yProps(tabName) {
   const theme = useTheme();
@@ -42,7 +42,7 @@ const AccountSettings = () => {
         </Box>
 
         {/* Pannels */}
-        <CardContent>{panels[value]}</CardContent>
+        {panels[value]}
       </Card>
     </main>
   );
