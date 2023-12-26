@@ -13,8 +13,3 @@
 .MuiGrid-item > * {
   height: 100%;
 }
-
-/* -------- */
-.MuiPaper-root.MuiPaper-root {
-  background-image: none;
-}
