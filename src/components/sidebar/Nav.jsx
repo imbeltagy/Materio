@@ -44,12 +44,6 @@ const Nav = () => {
     { type: "link", text: "Login", icon: <LoginOutlined />, to: "/login" },
     { type: "link", text: "Register", icon: <PersonAddOutlined />, to: "/register" },
     { type: "link", text: "Error", icon: <ErrorOutlineOutlined />, to: "/error" },
-    { type: "divider", text: "USER INTERFACE" },
-    { type: "link", text: "Typography", icon: <FormatSizeOutlined />, to: "/typography" },
-    { type: "link", text: "Icons", icon: <SpokeOutlined />, to: "/icons" },
-    { type: "link", text: "Cards", icon: <CreditCardOutlined />, to: "/cards" },
-    { type: "link", text: "Tables", icon: <WindowOutlined />, to: "/tables" },
-    { type: "link", text: "Form Layouts", icon: <ViewInArOutlined />, to: "/form-layouts" },
   ];
 
   const StyledList = styled(List)(({ theme }) => ({

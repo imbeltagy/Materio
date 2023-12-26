@@ -99,11 +99,6 @@ function App() {
     withSidebar: [
       { element: <Dashboard />, path: "/" },
       { element: <AccountSettings />, path: "/account-settings" },
-      { element: <>Typography</>, path: "/typography" },
-      { element: <>Icons</>, path: "/icons" },
-      { element: <>Cards</>, path: "/cards" },
-      { element: <>Tables</>, path: "/tables" },
-      { element: <>Form Layouts</>, path: "/form-layouts" },
     ],
     withoutSidebar: [
       { element: <Login />, path: "/login" },
