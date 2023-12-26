@@ -11,7 +11,7 @@ import TableCard from "./cards/Table";
 
 const Dashboard = () => {
   return (
-    <>
+    <Grid container spacing={3} component="main">
       {/* Item 1 ===================== */}
       <Grid item xs={12} md={4}>
         <Sales />
@@ -44,7 +44,7 @@ const Dashboard = () => {
       <Grid item xs={12}>
         <TableCard />
       </Grid>
-    </>
+    </Grid>
   );
 };
 

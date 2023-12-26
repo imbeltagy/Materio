@@ -1,4 +1,4 @@
-import { Container, CssBaseline, Grid, Stack, ThemeProvider, createTheme } from "@mui/material";
+import { Box, Container, CssBaseline, Grid, Stack, ThemeProvider, createTheme } from "@mui/material";
 import { useMemo, useState } from "react";
 import "./assets/fonts.css";
 import "./scrollbar.css";
@@ -13,9 +13,9 @@ const Layout = ({ setMode, sidebarOpen, setSidebarOpen }) => {
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
       <Container maxWidth="xl">
         <Header setMode={setMode} setSidebarOpen={setSidebarOpen} />
-        <Grid container spacing={3} mt={0} mb={3} component="main">
+        <Box marginBlock={3}>
           <Outlet />
-        </Grid>
+        </Box>
       </Container>
     </Stack>
   );
