@@ -9,6 +9,7 @@ const Dashboard = lazy(() => import("./pages/dashboard/Index"));
 const AccountSettings = lazy(() => import("./pages/accountSettings/Index"));
 const Login = lazy(() => import("./pages/login/Index"));
 const Register = lazy(() => import("./pages/register/Index"));
+const Error = lazy(() => import("./pages/error/Index"));
 
 const Layout = ({ setMode, sidebarOpen, setSidebarOpen }) => {
   return (
@@ -107,7 +108,7 @@ function App() {
     withoutSidebar: [
       { element: <Login />, path: "/login" },
       { element: <Register />, path: "/register" },
-      { element: <>Error</>, path: "/error" },
+      { element: <Error />, path: "*" },
     ],
   };
 
