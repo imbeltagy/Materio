@@ -1,7 +1,7 @@
 import { CardContent, Stack } from "@mui/material";
 import FormActions from "../../components/FormActions";
 import PasswordChanger from "./components/PasswordChanger";
-import TwoFactorAuth from "./components/twoFactorAuth";
+import TwoFactorAuth from "./components/TwoFactorAuth";
 import { useForm } from "react-hook-form";
 
 const SecurityPanel = () => {
